@@ -3,10 +3,13 @@ pragma solidity ^0.8.19;
 
 struct Pool {
     /// @notice address of the lender
+    // : This is the lender who give the loan
     address lender;
     /// @notice address of the loan token
+    // :  The token for which loan is requested
     address loanToken;
     /// @notice address of the collateral token
+    // : The token at which loan is requested
     address collateralToken;
     /// @notice the minimum size of the loan (to prevent griefing)
     uint256 minLoanSize;
@@ -22,6 +25,7 @@ struct Pool {
     uint256 outstandingLoans;
 }
 
+ // : poolid,debt, collateral
 struct Borrow {
     /// @notice the pool ID to borrow from
     bytes32 poolId;
@@ -31,6 +35,7 @@ struct Borrow {
     uint256 collateral;
 }
 
+ // : ok
 struct Loan {
     /// @notice address of the lender
     address lender;
@@ -54,6 +59,7 @@ struct Loan {
     uint256 auctionLength;
 }
 
+ //  : situation at which borrower not able to repay the loan then it will search for auctions.
 struct Refinance {
     /// @notice the loan ID to refinance
     uint256 loanId;
@@ -65,6 +71,7 @@ struct Refinance {
     uint256 collateral;
 }
 
+// s: ok
 struct Staked {
     /// @notice the amount of tokens staked
     uint256 amount;

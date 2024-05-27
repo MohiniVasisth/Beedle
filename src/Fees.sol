@@ -26,8 +26,7 @@ contract Fees {
     function sellProfits(address _profits) public {
         require(_profits != WETH, "not allowed");
         uint256 amount = IERC20(_profits).balanceOf(address(this));
-
-        ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
+  ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
             .ExactInputSingleParams({
                 tokenIn: _profits,
                 tokenOut: WETH,
@@ -35,11 +34,12 @@ contract Fees {
                 recipient: address(this),
                 deadline: block.timestamp,
                 amountIn: amount,
-                amountOutMinimum: 0,
+                amountOutMinimum: 0, 
                 sqrtPriceLimitX96: 0
             });
 
         amount = swapRouter.exactInputSingle(params);
+     
         IERC20(WETH).transfer(staking, IERC20(WETH).balanceOf(address(this)));
     }
 }

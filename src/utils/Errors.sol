@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
+ // -notes:ok
 error PoolConfig();
 error LoanTooSmall();
 error LoanTooLarge();

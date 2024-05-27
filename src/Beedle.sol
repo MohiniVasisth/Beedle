@@ -7,7 +7,7 @@ import {ERC20Permit} from "openzeppelin-contracts/contracts/token/ERC20/extensio
 import {ERC20Votes} from "openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
 contract Beedle is Ownable, ERC20, ERC20Permit, ERC20Votes {
-
+ 
     constructor() ERC20("Beedle", "BDL") ERC20Permit("Beedle") Ownable(msg.sender) {
         _mint(msg.sender, 1_000_000_000 * 1e18);
     }
@@ -20,7 +20,7 @@ contract Beedle is Ownable, ERC20, ERC20Permit, ERC20Votes {
     }
 
     function _mint(address to, uint256 amount)
-        internal
+        internal virtual
         override(ERC20, ERC20Votes)
     {
         super._mint(to, amount);
@@ -32,8 +32,7 @@ contract Beedle is Ownable, ERC20, ERC20Permit, ERC20Votes {
     {
         super._burn(account, amount);
     }
-    
-    function mint(address to, uint256 amount) external onlyOwner {
+             function mint(address to, uint256 amount) external onlyOwner {
         _mint(to, amount);
     }
 
